@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
+
+#title{
+    color:#fff;
+    text-transform: uppercase;
+    padding:10px;
+    margin:auto;
+    text-align: center;
+}
+
