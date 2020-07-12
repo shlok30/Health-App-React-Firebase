@@ -40,9 +40,7 @@ class DashboardComponent extends React.Component
         this.state = {
             email:"",
             details:[],
-            viewDetails:true,
-            editDetails:false,
-            uploadFile:false,
+            view:"viewDetails",
             image:[]
 
         }
@@ -52,7 +50,7 @@ class DashboardComponent extends React.Component
 
     details(event)
     {
-        if(event === 'viewDetails')
+       /* if(event === 'viewDetails')
         {
             this.setState(
                 {
@@ -94,7 +92,21 @@ class DashboardComponent extends React.Component
                  state: { email: this.state.email,
                         image:this.state.image }
              })
+        }  */
+        if(event !== 'viewFile'){
+            this.setState({
+            view:event
+        })
         }
+
+        else{
+            this.props.history.push({
+                 pathname:'/view',
+                 state: { email: this.state.email,
+                        image:this.state.image }
+             })
+        }
+        
 
 
     }
@@ -149,7 +161,7 @@ class DashboardComponent extends React.Component
             <main className={classes.main}>
                 <h1 id="welcome">Welcome {this.state.email} </h1>
                 <CssBaseline></CssBaseline>
-                {this.state.viewDetails? <Paper className={classes.paper}>
+                {this.state.view === 'viewDetails'? <Paper className={classes.paper}>
                          <Typography component='h1' variant='h5'>
                                 Check Your Details
                          </Typography>
@@ -196,11 +208,11 @@ class DashboardComponent extends React.Component
 
                                   
                             </form>
-                    </Paper>:this.state.editDetails?
+                    </Paper>:this.state.view === 'editDetails'?
                     <DetailsViewerComponent
-                    email={this.state.email} />:
+                    email={this.state.email} />:this.state.view === 'uploadFile'?
                     <UploadComponent 
-                    user={this.state.email}/>
+                    user={this.state.email}/>:null
                     
                     }
                 

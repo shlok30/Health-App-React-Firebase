@@ -9,6 +9,7 @@ import DashboardComponent from './dashboard/dashboard'
 import DetailsComponent from './details/details'
 import UploadComponent from './upload/upload'
 import SliderComponent from './slider/slider'
+import './firebase.js'
 const firebase = require("firebase")
 require("firebase/firestore")
 
